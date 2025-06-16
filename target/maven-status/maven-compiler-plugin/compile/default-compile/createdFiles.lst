@@ -1,0 +1,7 @@
+main\java\com\perpustakaan\desktop\App.class
+main\java\com\perpustakaan\desktop\dao\BukuDAO.class
+main\java\com\perpustakaan\desktop\dao\AnggotaDAO.class
+main\java\com\perpustakaan\desktop\util\DatabaseUtil.class
+main\java\com\perpustakaan\desktop\model\Buku.class
+main\java\com\perpustakaan\desktop\model\Anggota.class
+main\java\com\perpustakaan\desktop\controller\PrimaryController.class

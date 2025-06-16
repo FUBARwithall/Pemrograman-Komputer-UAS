@@ -1,0 +1,60 @@
+/* src/main/resources/com/perpustakaan/desktop/styles.css */
+
+/* Gaya untuk root AnchorPane */
+.root {
+    -fx-background-color: #e0f2f7; /* Warna latar belakang lembut */
+    -fx-font-family: "Segoe UI", sans-serif; /* Font umum */
+}
+
+/* Gaya untuk kontainer login */
+.login-container {
+    -fx-background-color: #ffffff; /* Latar belakang putih */
+    -fx-border-radius: 10px; /* Sudut membulat */
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5); /* Efek bayangan */
+    -fx-padding: 30px;
+}
+
+/* Gaya untuk judul aplikasi */
+.title-label {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #263238; /* Warna teks gelap */
+}
+
+/* Gaya untuk input field */
+.text-field, .password-field {
+    -fx-pref-height: 40px;
+    -fx-border-color: #b0bec5;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 0 10px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #007bff; /* Warna border saat fokus */
+    -fx-border-width: 2px;
+}
+
+/* Gaya untuk tombol */
+.button {
+    -fx-background-color: #007bff; /* Warna biru */
+    -fx-text-fill: white; /* Teks putih */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand; /* Kursor berubah jadi tangan saat dihover */
+}
+
+.button:hover {
+    -fx-background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+}
+
+/* Gaya untuk pesan error */
+.error-label {
+    -fx-text-fill: #dc3545; /* Warna merah */
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
