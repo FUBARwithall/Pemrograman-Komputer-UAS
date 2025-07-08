@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
 
 import db.DBConnector;
@@ -17,10 +13,6 @@ import java.io.IOException;
 import java.util.Date;
 import org.bson.Document;
 
-/**
- *
- * @author ASUS
- */
 public class PDFViewerPanel extends javax.swing.JPanel {
 
     private PDDocument document;

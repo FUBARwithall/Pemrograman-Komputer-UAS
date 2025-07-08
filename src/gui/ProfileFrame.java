@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
 import db.DBConnector;
@@ -12,15 +8,8 @@ import javax.swing.JOptionPane;
 import org.bson.Document;
 import util.CryptoUtil;
 
-/**
- *
- * @author ASUS
- */
 public class ProfileFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ProfileFrame
-     */
     private String currentUser;
 
     public ProfileFrame(String currentUser) {
@@ -261,7 +250,7 @@ public class ProfileFrame extends javax.swing.JFrame {
 
     private void bahasaCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bahasaCmbActionPerformed
         // TODO add your handling code here:
-        System.out.println("ComboBox dipilih: " + bahasaCmb.getSelectedItem()); // ← Tambahkan ini
+        System.out.println("ComboBox dipilih: " + bahasaCmb.getSelectedItem());
 
         String selected = (String) bahasaCmb.getSelectedItem();
         if ("English".equals(selected)) {

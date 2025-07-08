@@ -1,27 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
 import db.UserDAO;
 import i18n.I18n;
 import java.util.Date;
 import java.util.Locale;
-import model.User;
 import util.CryptoUtil;
 import javax.swing.*;
 import org.bson.Document;
 
-/**
- *
- * @author ASUS
- */
 public class RegisterFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegisterFrame
-     */
     public RegisterFrame() {
         initComponents();
 
@@ -41,7 +29,6 @@ public class RegisterFrame extends javax.swing.JFrame {
         registerBtn.setText(I18n.get("RegisterFrame.registerBtn.text"));
         tanyaAkunLabel.setText(I18n.get("RegisterFrame.tanyaAkunLabel.text"));
         toLoginBtn.setText(I18n.get("RegisterFrame.toLoginBtn.text"));
-
         sexCmb.removeAllItems();
         sexCmb.addItem(I18n.get("RegisterFrame.sexMale"));
         sexCmb.addItem(I18n.get("RegisterFrame.sexFemale"));
@@ -281,7 +268,6 @@ public class RegisterFrame extends javax.swing.JFrame {
             Date dob = DoBjDateChooser.getDate();
             String sex = (String) sexCmb.getSelectedItem();
 
-            // Validasi awal
             if (username.isEmpty() || fullName.isEmpty() || email.isEmpty() || pass.isEmpty() || confirmPass.isEmpty() || dob == null) {
                 JOptionPane.showMessageDialog(this, "Semua field wajib diisi.");
                 return;
@@ -294,7 +280,6 @@ public class RegisterFrame extends javax.swing.JFrame {
 
             String hashed = CryptoUtil.hashPassword(pass);
 
-            // Buat objek User dan simpan
             Document userDoc = new Document("username", username)
                     .append("passwordHash", hashed)
                     .append("name", fullName)

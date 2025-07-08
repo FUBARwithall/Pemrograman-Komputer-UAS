@@ -13,10 +13,9 @@ public class UserDAO {
         collection = db.getCollection("users");
     }
 
-    // Versi lama: hanya username dan passwordHash
     public boolean registerUser(User user) {
         if (collection.find(new Document("username", user.getUsername())).first() != null)
-            return false; // user already exists
+            return false;
 
         Document doc = new Document("username", user.getUsername())
                 .append("passwordHash", user.getPasswordHash());
@@ -24,11 +23,10 @@ public class UserDAO {
         return true;
     }
 
-    // Versi baru: menyimpan data lengkap langsung dari Document
     public boolean registerUser(Document userDoc) {
         String username = userDoc.getString("username");
         if (collection.find(new Document("username", username)).first() != null)
-            return false; // user already exists
+            return false;
 
         collection.insertOne(userDoc);
         return true;

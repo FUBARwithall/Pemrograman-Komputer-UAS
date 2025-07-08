@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
 import com.mongodb.client.FindIterable;
@@ -20,10 +16,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.bson.Document;
 
-/**
- *
- * @author ASUS
- */
 public class ManageFrame extends javax.swing.JFrame {
 
     private DefaultTableModel modelKelola;
@@ -31,9 +23,6 @@ public class ManageFrame extends javax.swing.JFrame {
     private DefaultTableModel modelBookmark;
     private String currentUser;
 
-    /**
-     * Creates new form KelolaBuku
-     */
     public ManageFrame(String username) {
         initComponents();
 
@@ -44,7 +33,7 @@ public class ManageFrame extends javax.swing.JFrame {
         userLabel.setText(username);
 
         modelKelola = new DefaultTableModel(new String[]{"Judul", "Tanggal Pinjam"}, 0);
-        kelolaTabel.setModel(modelKelola); // pastikan ini sesuai nama JTable kamu
+        kelolaTabel.setModel(modelKelola);
 
         modelRiwayat = new DefaultTableModel(new String[]{"Judul", "Tanggal Pinjam", "Tanggal Kembali", "Status"}, 0);
         riwayatTabel.setModel(modelRiwayat);
@@ -108,7 +97,7 @@ public class ManageFrame extends javax.swing.JFrame {
     }
 
     private void loadKelola() {
-        modelKelola.setRowCount(0); // Kosongkan tabel dulu
+        modelKelola.setRowCount(0);
 
         var peminjaman = DBConnector.connect().getCollection("peminjaman");
 
@@ -128,7 +117,7 @@ public class ManageFrame extends javax.swing.JFrame {
     }
 
     private void loadRiwayat() {
-        modelRiwayat.setRowCount(0); // kosongkan dulu
+        modelRiwayat.setRowCount(0);
 
         var peminjaman = DBConnector.connect().getCollection("peminjaman");
         var hasil = peminjaman.find(new Document("user", currentUser));
@@ -519,7 +508,7 @@ public class ManageFrame extends javax.swing.JFrame {
             );
 
             JOptionPane.showMessageDialog(this, "Buku berhasil dikembalikan: " + judul);
-            loadKelola(); // refresh tabel setelah pengembalian
+            loadKelola();
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, "Gagal mengembalikan buku: " + e.getMessage());
         }
@@ -554,36 +543,31 @@ public class ManageFrame extends javax.swing.JFrame {
 
         String judul = bookmarkTabel.getValueAt(selectedRow, 0).toString();
 
-        // Ambil data dari Mongo berdasarkan judul
         var collection = DBConnector.connect().getCollection("books");
         Document doc = collection.find(new Document("Judul", judul)).first();
 
         if (doc != null && doc.containsKey("pdfPath")) {
             String pdfPath = doc.getString("pdfPath");
 
-            // Buat panel pembaca
             PDFViewerPanel viewerPanel = new PDFViewerPanel(pdfPath, judul, currentUser);
 
-            // Buat frame pembaca
             JFrame readerFrame = new JFrame("Reading: " + judul);
             readerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             readerFrame.setSize(800, 600);
             readerFrame.setLocationRelativeTo(this);
             readerFrame.add(viewerPanel);
 
-            // Tambahkan listener agar saat frame ditutup, bookmark disimpan
             readerFrame.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
-                    viewerPanel.closeDocument();  // Simpan bookmark
+                    viewerPanel.closeDocument();
                 }
 
                 @Override
                 public void windowClosed(java.awt.event.WindowEvent e) {
-                    loadBookmarks(); // Refresh isi tabel bookmark
+                    loadBookmarks();
                 }
             });
-
             readerFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Buku tidak memiliki file PDF.");

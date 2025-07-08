@@ -11,10 +11,6 @@ import javax.swing.JTable;
 import org.bson.Document;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author ASUS
- */
 public class MainFrame extends javax.swing.JFrame {
 
     private JTable table;
@@ -62,16 +58,15 @@ public class MainFrame extends javax.swing.JFrame {
             tableModel.addRow(new Object[]{judul, penulis, tahun, kategori, status});
         }
 
-        // Set lebar kolom hanya sekali, setelah isi data
-        table.getColumnModel().getColumn(0).setPreferredWidth(600); // Judul
-        table.getColumnModel().getColumn(1).setPreferredWidth(250); // Penulis
-        table.getColumnModel().getColumn(2).setPreferredWidth(100);  // Tahun
-        table.getColumnModel().getColumn(3).setPreferredWidth(250); // Kategori
-        table.getColumnModel().getColumn(4).setPreferredWidth(135); // Status
+        table.getColumnModel().getColumn(0).setPreferredWidth(600);
+        table.getColumnModel().getColumn(1).setPreferredWidth(250);
+        table.getColumnModel().getColumn(2).setPreferredWidth(100);
+        table.getColumnModel().getColumn(3).setPreferredWidth(250);
+        table.getColumnModel().getColumn(4).setPreferredWidth(135);
     }
 
     private void loadDataBukuFiltered() {
-        tableModel.setRowCount(0); // clear tabel
+        tableModel.setRowCount(0);
 
         var books = DBConnector.connect().getCollection("books");
         Document filter = new Document();
@@ -117,7 +112,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void loadKategoriCombo() {
         kategoriCmb.removeAllItems();
-        kategoriCmb.addItem("Semua"); // default option
+        kategoriCmb.addItem("Semua");
 
         var books = DBConnector.connect().getCollection("books");
 
@@ -132,7 +127,6 @@ public class MainFrame extends javax.swing.JFrame {
         kelolaButton.setText(I18n.get("MainFrame.kelolaButton.text"));
         changePassBtn.setText(I18n.get("MainFrame.changePassBtn.text"));
         logoutBtn.setText(I18n.get("MainFrame.logoutBtn.text"));
-
         jLabel1.setText(I18n.get("MainFrame.jLabel1.text"));
         jLabel2.setText(I18n.get("MainFrame.jLabel2.text"));
         tersediaCheckBox.setText(I18n.get("MainFrame.tersediaCheckBox.text"));

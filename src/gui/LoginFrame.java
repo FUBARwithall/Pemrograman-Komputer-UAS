@@ -6,15 +6,8 @@ import java.util.Locale;
 import util.CryptoUtil;
 import javax.swing.*;
 
-/**
- *
- * @author ASUS
- */
 public class LoginFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginFrame
-     */
     public LoginFrame() {
         initComponents();
 
